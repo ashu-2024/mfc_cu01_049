@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L0 - Mastering CSS Display Properties</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        /* Block element */
+        .block-element {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            border: 2px solid blue;
+            background-color: lightblue;
+        }
+
+        /* Inline element */
+        .inline-element {
+            display: inline;
+            padding: 5px 10px;
+            background-color: lightcoral;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Inline-block element */
+        .inline-block-element {
+            display: inline-block;
+            width: 150px;
+            height: 50px;
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid green;
+            background-color: lightgreen;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        /* Hidden element */
+        .hidden-element {
+            display: none;
+            width: 200px;
+            margin: 10px auto;
+            padding: 10px;
+            border: 2px dashed red;
+            background-color: pink;
+        }
+
+        /* Button Styling */
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: darkblue;
+            color: white;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: navy;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mastering CSS Display Properties</h1>
+
+    <div class="block-element">This is a Block Element (Full-width).</div>
+    <span class="inline-element">This is an Inline Element.</span>
+    <div class="inline-block-element">Inline-Block</div>
+    <div class="hidden-element" id="hiddenBox">This element is initially hidden.</div>
+
+    <button onclick="toggleVisibility()">Toggle Hidden Element</button>
+
+    <script>
+        function toggleVisibility() {
+            let hiddenBox = document.getElementById("hiddenBox");
+            if (hiddenBox.style.display === "none") {
+                hiddenBox.style.display = "block";
+            } else {
+                hiddenBox.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
