@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L1 - Implementing Sticky and Fixed Positioning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sticky Header */
+        .header {
+            position: sticky;
+            top: 0;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            z-index: 1000;
+        }
+
+        /* Fixed Footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 20px;
+            margin-bottom: 50px; /* To prevent content from being hidden behind the fixed footer */
+        }
+
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">Sticky Header - Always at the Top</div>
+
+    <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Praesent vel lacus in velit fermentum scelerisque.</p>
+        <p>Curabitur nec dui at urna bibendum feugiat.</p>
+        <p>Donec accumsan ex id arcu vestibulum, eget bibendum eros imperdiet.</p>
+        <p>Mauris aliquam tortor vel urna fermentum, ac dignissim augue fermentum.</p>
+        <p>Aliquam erat volutpat. Vestibulum quis neque eu ligula tempor bibendum.</p>
+        <p>Nam ac justo in nunc dapibus consequat a a justo.</p>
+        <p>Phasellus vitae ligula eget turpis vulputate bibendum.</p>
+        <p>Sed vehicula, ipsum id feugiat dapibus, ex felis varius elit, nec rhoncus tortor nisl ut mauris.</p>
+        <p>Integer quis orci non ipsum interdum faucibus sit amet ac justo.</p>
+    </div>
+
+    <div class="footer">Fixed Footer - Always at the Bottom</div>
+
+</body>
+</html>
