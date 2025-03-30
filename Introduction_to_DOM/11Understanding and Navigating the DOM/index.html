@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Navigation</title>
+    <style>
+        .container {
+            padding: 20px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Original Title</h1>
+    <p>First paragraph.</p>
+    <p>Second paragraph.</p>
+    <div class="container">This is a container div.</div>
+    <script>
+        document.getElementById("title").textContent = "Welcome to the DOM World!";
+        let paragraphs = document.getElementsByTagName("p");
+        for (let p of paragraphs) {
+            p.style.color = "blue";
+        }
+        document.querySelector(".container").style.backgroundColor = "yellow";
+    </script>
+</body>
+</html>
