@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Propagation</title>
+    <style>
+        .box {
+            padding: 20px;
+            margin: 10px;
+            border: 2px solid black;
+        }
+        #div1 { background-color: lightblue; }
+        #div2 { background-color: lightgreen; }
+        #div3 { background-color: lightcoral; }
+    </style>
+</head>
+<body>
+
+    <div id="div1" class="box">
+        Div 1
+        <div id="div2" class="box">
+            Div 2
+            <div id="div3" class="box">
+                Div 3
+                <button id="innerButton">Click Me (Stop Propagation)</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

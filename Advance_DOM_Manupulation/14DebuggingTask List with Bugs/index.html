@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Task List</title>
+</head>
+<body>
+  <input id="taskInput" type="text" placeholder="Enter task">
+  <button id="addTask">Add Task</button>
+  <ul id="taskList"></ul>
+
+  <script>
+    const addTaskButton = document.getElementById('addTask');
+    const taskInput = document.getElementById('taskInput');
+    const taskList = document.getElementById('taskList');
+
+    addTaskButton.onclick = function () {
+      const taskText = taskInput.value.trim();
+      
+      if (taskText === "") {
+        alert("Task cannot be empty!");
+        return;
+      }
+
+      const newTask = document.createElement('li');
+      newTask.textContent = taskText; // Issue 1: Use textContent instead of innerHTML
+      taskList.appendChild(newTask); // Issue 2: Use appendChild() instead of append()
+
+      taskInput.value = ""; // Clear input after adding task
+    };
+
+    taskList.addEventListener("click", function (e) {
+      if (e.target.tagName === 'LI') { // Issue 3: Use e.target.tagName instead of e.tagName
+        e.target.remove();
+      }
+    });
+  </script>
+</body>
+</html>
