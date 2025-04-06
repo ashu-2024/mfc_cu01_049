@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo Pagination</title>
+  <style>
+    .todo-item {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px auto;
+      width: 400px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .pagination button {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div style="text-align:center;">
+    <button id="fetchBtn">Fetch Todos</button>
+  </div>
+
+  <div id="todo-container"></div>
+  <div class="pagination" id="pagination"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

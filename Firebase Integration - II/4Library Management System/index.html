@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Library Management System</h1>
+
+  <div class="form-group">
+    <h3>Add Book</h3>
+    <input id="title" placeholder="Title" />
+    <input id="author" placeholder="Author" />
+    <input id="genre" placeholder="Genre" />
+    <input id="year" type="number" placeholder="Published Year" />
+    <label><input type="checkbox" id="available" /> Available</label>
+    <button onclick="addBook()">Add</button>
+  </div>
+
+  <div class="filter-group">
+    <h3>Filters</h3>
+    <select id="genreFilter" onchange="applyFilters()">
+      <option value="">All Genres</option>
+      <option value="Science Fiction">Science Fiction</option>
+      <option value="Dystopian">Dystopian</option>
+    </select>
+
+    <select id="sortBy" onchange="applyFilters()">
+      <option value="">Sort By</option>
+      <option value="title">Title</option>
+      <option value="author">Author</option>
+      <option value="publishedYear">Published Year</option>
+    </select>
+
+    <label>Items per page:
+      <select id="limit" onchange="applyFilters()">
+        <option value="5">5</option>
+        <option value="10">10</option>
+      </select>
+    </label>
+  </div>
+
+  <div id="bookList"></div>
+  <div class="pagination">
+    <button onclick="prevPage()">Prev</button>
+    <span id="pageNumber">1</span>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

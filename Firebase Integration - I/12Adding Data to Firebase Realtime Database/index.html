@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add User to Firebase</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 30px; }
+    form { max-width: 400px; margin: auto; }
+    input, button {
+      width: 100%; padding: 10px; margin: 10px 0; font-size: 16px;
+    }
+    #message {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    .success { color: green; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">Add User</h2>
+
+  <form id="userForm">
+    <input type="text" id="name" placeholder="Enter Name" required />
+    <input type="email" id="email" placeholder="Enter Email" required />
+    <button type="submit">Register</button>
+  </form>
+
+  <div id="message"></div>
+
+  <script>
+    const firebaseURL = "https://YOUR_PROJECT_ID.firebaseio.com/users.json"; 
+    document.getElementById("userForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const messageDiv = document.getElementById("message");
+
+      if (!name || !email) {
+        messageDiv.textContent = "Both fields are required!";
+        messageDiv.className = "error";
+        return;
+      }
+
+      const user = { name, email };
+
+      try {
+        const response = await fetch(firebaseURL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(user)
+        });
+
+        if (!response.ok) throw new Error("Failed to add user.");
+
+        messageDiv.textContent = "User added successfully!";
+        messageDiv.className = "success";
+        document.getElementById("userForm").reset();
+      } catch (error) {
+        messageDiv.textContent = error.message;
+        messageDiv.className = "error";
+      }
+    });
+  </script>
+</body>
+</html>

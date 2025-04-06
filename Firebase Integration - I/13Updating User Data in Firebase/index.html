@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Management</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 30px; }
+    form, table { max-width: 600px; margin: auto; }
+    input, button { padding: 10px; margin: 10px 0; width: 100%; font-size: 16px; }
+    #message { text-align: center; font-weight: bold; }
+    .success { color: green; }
+    .error { color: red; }
+    table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">User Management</h2>
+
+  <form id="userForm">
+    <input type="text" id="name" placeholder="Enter Name" required />
+    <input type="email" id="email" placeholder="Enter Email" required />
+    <input type="hidden" id="userId" />
+    <button type="submit">Save</button>
+  </form>
+
+  <div id="message"></div>
+
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const firebaseURL = "https://YOUR_PROJECT_ID.firebaseio.com/users"; 
+    const form = document.getElementById("userForm");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const userIdInput = document.getElementById("userId");
+    const messageDiv = document.getElementById("message");
+    const userTableBody = document.querySelector("#userTable tbody");
+
+    async function fetchUsers() {
+      try {
+        const res = await fetch(`${firebaseURL}.json`);
+        const data = await res.json();
+        renderUsers(data);
+      } catch (err) {
+        messageDiv.textContent = "Failed to fetch users.";
+        messageDiv.className = "error";
+      }
+    }
+
+    function renderUsers(data) {
+      userTableBody.innerHTML = "";
+      if (!data) return;
+      Object.entries(data).forEach(([id, user]) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${user.name}</td>
+          <td>${user.email}</td>
+          <td>
+            <button onclick="editUser('${id}', '${user.name}', '${user.email}')">Edit</button>
+          </td>
+        `;
+        userTableBody.appendChild(row);
+      });
+    }
+
+    window.editUser = function(id, name, email) {
+      nameInput.value = name;
+      emailInput.value = email;
+      userIdInput.value = id;
+      messageDiv.textContent = "";
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const userId = userIdInput.value;
+
+      if (!name || !email) {
+        messageDiv.textContent = "All fields are required.";
+        messageDiv.className = "error";
+        return;
+      }
+
+      const userData = { name, email };
+
+      try {
+        const url = userId
+          ? `${firebaseURL}/${userId}.json`  
+          : `${firebaseURL}.json`;          
+
+        const method = userId ? "PATCH" : "POST";
+
+        const res = await fetch(url, {
+          method: method,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(userData)
+        });
+
+        if (!res.ok) throw new Error("Failed to save user.");
+
+        messageDiv.textContent = userId ? "User updated successfully." : "User added successfully.";
+        messageDiv.className = "success";
+        form.reset();
+        fetchUsers();
+      } catch (error) {
+        messageDiv.textContent = error.message;
+        messageDiv.className = "error";
+      }
+    });
+
+    fetchUsers();
+  </script>
+</body>
+</html>

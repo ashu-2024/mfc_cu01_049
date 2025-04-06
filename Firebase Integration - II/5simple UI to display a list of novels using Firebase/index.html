@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Novel Library</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Novel Library</h1>
+
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Search by title or author" />
+    <select id="yearFilter">
+      <option value="">Filter by Year</option>
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+    </select>
+    <select id="sortPrice">
+      <option value="">Sort by Price</option>
+      <option value="asc">Low to High</option>
+      <option value="desc">High to Low</option>
+    </select>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>Release Year</th>
+        <th>Genre</th>
+      </tr>
+    </thead>
+    <tbody id="novelTable"></tbody>
+  </table>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <script src="main.js"></script>
+</body>
+</html>
