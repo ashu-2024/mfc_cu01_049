@@ -1,0 +1,109 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .container {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: linear-gradient(to right, #70959f, #9bbce4);
+    color: white;
+  }
+  .feedback-form {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .feedback-form input, .feedback-form textarea {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+  }
+  .feedback-form input:focus, .feedback-form textarea:focus {
+    border-color: #acc2dc;
+  }
+  .feedback-form button {
+    background: #42556c;
+    color: white;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .feedback-form button:hover {
+    background: #005bb5;
+  }
+  .feedback-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+  }
+  .feedback-card {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 250px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+  }
+  .feedback-card h3 {
+    margin-bottom: 0.5rem;
+  }
+  .feedback-card button{
+    position:absolute;
+    top:10px;
+    right:10px;
+    background:crimson;
+    color:white;
+    border:none;
+    padding:0.3rem 0.6rem;
+    border-radius:5px;
+    cursor:pointer;
+    transition:background 0.3s;
+  }
+  .feedback-card button:hover{
+    background: darkred;
+  }
+  
+ 
+  body.light {
+    background: #fff;
+    color: #000;
+  }
+  
+  body.dark {
+    background: #121212;
+    color: #eee;
+  }
+  
+
+  @media (max-width: 768px) {
+    .feedback-list {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+ 
+  h1::after {
+    content: " ⭐";
+  }
+  
+  .message {
+    color: green;
+    font-size: 0.9rem;
+  }
+  
