@@ -1,0 +1,46 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .card {
+    padding: 20px;
+    background-color: #fff;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .card:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .task-card {
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  
+  input, select {
+    padding: 5px;
+    margin: 5px;
+  }
+  
+  button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
